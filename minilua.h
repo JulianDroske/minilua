@@ -2799,7 +2799,7 @@ typedef union Closure {
 typedef union Node {
   struct NodeKey {
     TValuefields;  /* fields for value */
-    lu_byte key_tt;  /* key type */
+    lu_byte key_tt; char _padding[3];  /* key type */
     int next;  /* for chaining */
     Value key_val;  /* key value */
   } u;
@@ -28952,6 +28952,7 @@ int main (int argc, char **argv) {
 
   Copyright (c) 1994–2019 Lua.org, PUC-Rio.
   Copyright (c) 2020-2022 Eduardo Bart (https://github.com/edubart).
+  Copyright (c) 2023      Julian Droske (https://github.com/JulianDroske)
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal

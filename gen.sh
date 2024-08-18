@@ -142,6 +142,9 @@ echo "#endif /* LUA_MAKE_LUA */" >> $OUTFILE
 # Comment all include headers
 sed -i 's/#include "\([^"]*\)"/\/\*#include "\1"\*\//' $OUTFILE
 
+# Patch for TinyCC
+sed -i 's/lu_byte key_tt;/lu_byte key_tt; char _padding[3];/' $OUTFILE
+
 cat <<EOF >> $OUTFILE
 
 /*
@@ -149,6 +152,7 @@ cat <<EOF >> $OUTFILE
 
   Copyright (c) 1994–2019 Lua.org, PUC-Rio.
   Copyright (c) 2020-2022 Eduardo Bart (https://github.com/edubart).
+  Copyright (c) 2023      Julian Droske (https://github.com/JulianDroske)
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
